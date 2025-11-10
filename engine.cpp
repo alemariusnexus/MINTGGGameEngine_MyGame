@@ -10,7 +10,7 @@ ScreenST7735 screen(&tft);
 Game game;
 
 
-// In der SKetchdatei zu definieren!
+// In der Sketchdatei zu definieren!
 void gameSetup();
 void gameLoop(float dt);
 void onCollision(const GameObjectCollision& coll);
@@ -21,6 +21,8 @@ void setup() {
   // ********** PERIPHERAL SETUP **********
 
   Serial.begin(115200);
+  
+  Wire.begin();
 
   tftSPI.begin(TFT_SCLK, -1, TFT_MOSI, TFT_CS); // SCK, MISO, MOSI, CS
 
@@ -36,6 +38,7 @@ void setup() {
   screen.begin();
   game.begin(screen);
   game.audio().begin(SPEAKER_PIN);
+  game.input().begin(10);
 
 
   // ********** GAME SETUP **********
