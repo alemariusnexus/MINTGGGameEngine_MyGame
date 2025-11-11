@@ -1,5 +1,7 @@
 #include "engine.h"
 
+#include "images.h"
+
 
 // Tags für GameObjects definieren. Dient z.B. dazu, die Art von
 // GameObject zu definieren (z.B. Player, Enemy, Bullet, ...), und

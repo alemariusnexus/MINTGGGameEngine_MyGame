@@ -8,7 +8,6 @@
 #include <stdint.h>
 
 #include "defines.h"
-#include "images.h"
 #include "audio.h"
 
 using namespace MINTGGGameEngine;
