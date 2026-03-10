@@ -15,3 +15,5 @@ using namespace MINTGGGameEngine;
 
 extern ScreenST7735 screen;
 extern Game game;
+
+extern bool sdCardInitialized;
