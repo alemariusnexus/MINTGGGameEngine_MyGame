@@ -20,3 +20,5 @@
 
 // Speaker pin
 #define SPEAKER_PIN   -1
+
+//#define MOUNT_SPIFFS
