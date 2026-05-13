@@ -7,4 +7,4 @@
 [submodule "components/MINTGGGameEngine"]
 	path = components/MINTGGGameEngine
 	url = https://github.com/alemariusnexus/MINTGGGameEngine.git
-	branch = esp-idf-port
+	branch = main
