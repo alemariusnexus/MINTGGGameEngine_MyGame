@@ -1,9 +1,3 @@
-[submodule "components/hagl"]
-	path = components/hagl
-	url = https://github.com/alemariusnexus/hagl.git
-[submodule "components/hagl_hal"]
-	path = components/hagl_hal
-	url = https://github.com/alemariusnexus/hagl_esp_mipi.git
 [submodule "components/MINTGGGameEngine"]
 	path = components/MINTGGGameEngine
 	url = https://github.com/alemariusnexus/MINTGGGameEngine.git
