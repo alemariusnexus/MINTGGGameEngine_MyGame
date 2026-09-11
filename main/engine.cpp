@@ -18,8 +18,9 @@ Game game;
 
 void EngineSetup()
 {
+	DelayTaskMs(250);
     engine.earlySetup();
-    DelayTaskMs(1000);
+    DelayTaskMs(500);
 
     spi_host_device_t spiHost = SPI2_HOST;
 
