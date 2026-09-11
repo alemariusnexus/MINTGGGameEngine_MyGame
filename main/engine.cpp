@@ -18,7 +18,7 @@ Game game;
 
 void EngineSetup()
 {
-	DelayTaskMs(250);
+	DelayTaskMs(500);
     engine.earlySetup();
     DelayTaskMs(500);
 
