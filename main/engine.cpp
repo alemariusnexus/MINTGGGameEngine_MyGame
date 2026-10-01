@@ -4,9 +4,6 @@
 LOG_USE_TAG("engine")
 
 
-#define SPI_MAX_TRANSFER_SIZE   4092
-
-
 void gameSetup();
 void gameLoop(float dt);
 void postDraw(float dt);
@@ -22,13 +19,10 @@ void EngineSetup()
     engine.earlySetup();
     DelayTaskMs(500);
 
-    spi_host_device_t spiHost = SPI2_HOST;
-
 #if defined(DISPLAY_TYPE_ST7735_SPI)
     ScreenST7735::Config screenCfg;
     ScreenST7735::initConfig(screenCfg);
-    screenCfg.spiHost               = spiHost;
-    screenCfg.spiMaxTransferSize    = SPI_MAX_TRANSFER_SIZE;
+    screenCfg.engine                = &engine;
     screenCfg.pins.cs               = DISPLAY_CS;
     screenCfg.pins.dc               = DISPLAY_DC;
     screenCfg.pins.rst              = DISPLAY_RST;
@@ -36,6 +30,7 @@ void EngineSetup()
 #elif defined(DISPLAY_TYPE_ILI9341_8080)
     ScreenILI9341::Config screenCfg;
     ScreenILI9341::initConfig(screenCfg);
+    screenCfg.engine        = &engine;
     screenCfg.pins.cs       = DISPLAY_CS;
     screenCfg.pins.dc       = DISPLAY_DC;
     screenCfg.pins.rst      = DISPLAY_RST;
@@ -54,29 +49,15 @@ void EngineSetup()
     Screen* screen = new ScreenNull;
 #endif
 
-    DefaultEngine::SetupConfig cfg = {
-        .game = &game,
-
-        .appID = "mygame",
-
-        .sdCardMountPoint = "/sdcard",
-        .internalStorageMountPoint = "/storage",
-
-        .screen = screen,
-
-        .spiHost = spiHost,
-        .spiMaxTransferSize = SPI_MAX_TRANSFER_SIZE,
-
-        .pins = {
-            .spiMISO    = SPI_MISO,
-            .spiMOSI    = SPI_MOSI,
-            .spiSCK     = SPI_SCK,
-
-            .sdCardCS   = SD_CS,
-
-            .speaker    = SPEAKER_PIN
-        }
-    };
+    DefaultEngine::SetupConfig cfg;
+    DefaultEngine::initConfig(cfg);
+    cfg.game            = &game;
+    cfg.screen          = screen;
+    cfg.pins.spiMISO    = SPI_MISO;
+    cfg.pins.spiMOSI    = SPI_MOSI;
+    cfg.pins.spiSCK     = SPI_SCK;
+    cfg.pins.sdCardCS   = SD_CS;
+    cfg.pins.speaker    = SPEAKER_PIN;
 
     //engine.setPrintFrameStatistics(true);
     engine.setup(&cfg);
@@ -90,9 +71,14 @@ void EngineSetup()
     LogInfo("Running main loop...");
 }
 
-void EngineLoop()
+bool EngineLoop()
 {
-    engine.doFrame(&gameLoop, &postDraw);
+    return engine.doFrame(&gameLoop, &postDraw);
+}
+
+void EngineShutdown()
+{
+    engine.shutdown();
 }
 
 

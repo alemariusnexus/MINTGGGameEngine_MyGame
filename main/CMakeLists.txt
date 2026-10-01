@@ -1,17 +1,11 @@
-idf_component_register(
-    SRCS
-		audio.cpp
-		engine.cpp
-		main.cpp
-    INCLUDE_DIRS
-    PRIV_INCLUDE_DIRS
-    REQUIRES
-        MINTGGGameEngine
-    PRIV_REQUIRES
+include("${CMAKE_CURRENT_SOURCE_DIR}/../components/MINTGGGameEngine/cmake/MINTGGGameEngine.cmake")
+
+MINTGGGameEngine_ComponentPrologue()
+
+set(SRCS
+        audio.cpp
+        engine.cpp
+        main.cpp
 )
 
-target_compile_options(${COMPONENT_LIB} PRIVATE
-    -Wno-missing-field-initializers
-    )
-
-spiffs_create_partition_image(spiffs ../spiffs FLASH_IN_PROJECT)
+MINTGGGameEngine_SetupApplication()

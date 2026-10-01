@@ -1,4 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 
-include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+include("${CMAKE_CURRENT_SOURCE_DIR}/components/MINTGGGameEngine/cmake/MINTGGGameEngine.cmake")
+
+MINTGGGameEngine_ProjectPrologue()
+
 project(MINTGGGameEngine_MyGame C CXX)
+
+MINTGGGameEngine_SetupProject()
