@@ -1,0 +1,11 @@
+{
+	"keymap" : {
+		"Left"    : "left",
+		"Right"   : "right",
+        "Up"      : "up",
+        "Down"    : "down"
+	},
+	"screen" : {
+	  "transformMode" : "fast"
+	}
+}

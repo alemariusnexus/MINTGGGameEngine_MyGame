@@ -1,12 +1,7 @@
-#include "engine.h"
-
-using namespace std;
+#include <MINTGGGameEngine.h>
 
 LOG_USE_TAG("main")
 
-
-enum GameObjectTag {
-};
 
 
 void gameSetup()
