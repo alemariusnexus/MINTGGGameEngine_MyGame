@@ -6,6 +6,7 @@
         "Down"    : "down"
 	},
 	"screen" : {
-	  "transformMode" : "fast"
+	  "transformMode" : "fast",
+		"keepAspectRatio" : true
 	}
 }
